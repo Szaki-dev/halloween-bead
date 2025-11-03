@@ -37,11 +37,7 @@ function App() {
     fetchData()
   }, [])
 
-  const handleAddressChanged = async () => {
-    await fetchData()
-  }
-
-  const handleNewAddress = async () => {
+  const handleAddressChange = async () => {
     await fetchData()
   }
 
@@ -55,7 +51,7 @@ function App() {
         <Summary addresses={addresses} />
 
         <section className="flex flex-col gap-3">
-          <NewAddress onNewAddress={handleNewAddress} />
+          <NewAddress onNewAddress={handleAddressChange} />
 
           {loading ? (
             <div className="flex justify-center py-8">
@@ -67,7 +63,7 @@ function App() {
                 <AddressCard
                   key={String(addr.id)}
                   data={addr}
-                  onAddressChanged={handleAddressChanged}
+                  onAddressChanged={handleAddressChange}
                 />
               ))}
             </div>
